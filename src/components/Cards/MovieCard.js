@@ -4,7 +4,7 @@ import RatingProgress from "../RatingProgress";
 
 const MovieCard = () => {
     return (
-      <div className="card card-compact w-11/12 mx-auto shadow-md">
+      <div className="card card-compact w-11/12 mx-auto shadow-md my-2 hover:opacity-80 duration-200">
         <Link to={`/movie/1`}>
           <div className=" w-full relative ">
             <img

@@ -14,15 +14,15 @@ const Hero = () => {
           </p>
           {/* Banner action  */}
           <div className="mt-5 flex  mx-auto justify-center gap-2 flex-col">
-            <div class="flex rounded-lg shadow-sm w-10/12 md:w-5/12 mx-auto">
+            <div className="flex rounded-lg shadow-sm w-10/12 md:w-5/12 mx-auto">
               <input
                 type="text"
                 placeholder="Search for the movie or Tv show"
-                class="py-3 px-4 block w-full  shadow-sm rounded-s-full text-black disabled:opacity-50 disabled:pointer-events-none outline-none bg-white text-lg"
+                className="py-3 px-4 block w-full  shadow-sm rounded-s-full text-black disabled:opacity-50 disabled:pointer-events-none outline-none bg-white text-lg"
               />
               <button
                 type="button"
-                class="py-3 px-9 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-e-full border border-transparent bg-success hover:opacity-90"
+                className="py-3 px-9 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-e-full border border-transparent bg-success hover:opacity-90"
               >
                 Button
               </button>

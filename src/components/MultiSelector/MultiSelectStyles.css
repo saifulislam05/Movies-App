@@ -1,0 +1,35 @@
+/* MultiSelectStyles.css */
+.multiselect-container .highlight,
+.multiselect-container .option:hover {
+    background-color: green !important;
+}
+
+/* Additional styles for the Multiselect component */
+.multiselect-container {
+    max-width: 400px;
+    color: white;
+    border: green;
+}
+
+ .searchWrapper {
+    border: 2px solid green;
+    padding: 2px 5px;
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
+}
+
+.searchWrapper .chip {
+    background: green;
+    padding: 1px 3px;
+    font-size: 12px;
+}
+
+.optionContainer {
+    background: black;
+}
+.optionContainer .option {
+    padding: 2px 5px;
+}

@@ -14,7 +14,7 @@ const Navbar = () => {
               <Link to="/explore/movies">Movies</Link>
             </li>
             <li className="hover:text-warning">
-              <Link to="/explore/tv">Tv Shows</Link>
+              <Link to="/explore/tvshows">Tv Shows</Link>
             </li>
           </ul>
           <div className="form-control">
@@ -51,7 +51,7 @@ const Navbar = () => {
                 <Link to="/settings">Settings</Link>
               </li>
               <li>
-                <a href="/">Logout</a> 
+                <a href="/">Logout</a>
               </li>
             </ul>
           </div>
