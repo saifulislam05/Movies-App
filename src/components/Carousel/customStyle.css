@@ -1,0 +1,42 @@
+.alice-carousel {
+    position: relative;
+}
+
+/* .alice-carousel__next-btn,
+.alice-carousel__prev-btn{
+width: fit-content;
+} */
+.alice-carousel__prev-btn-item span,
+
+.alice-carousel__next-btn-item span {
+    position: absolute;
+    background: black;
+    top: 40%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+}.alice-carousel__prev-btn-item span ::after,
+.alice-carousel__next-btn-item span ::after{
+font-size: xx-large;
+}
+
+.alice-carousel__prev-btn-item span {
+    left: 10px;
+}
+
+.alice-carousel__next-btn-item span {
+    right: 10px;
+}
+
+/* .alice-carousel__next-btn,.alice-carousel__prev-btn */
+
+.alice-carousel__dots{
+    display: none;
+}

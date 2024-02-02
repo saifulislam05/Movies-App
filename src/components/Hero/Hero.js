@@ -2,7 +2,7 @@ import React from "react";
 
 const Hero = () => {
   return (
-    <div className="min-h-[600px] sm:px-2 px-3 max-h-[800px] py-20 bg-cover bg-hero-bg-img text-white">
+    <div className="min-h-[600px] sm:px-2 px-3 max-h-[800px] py-20 bg-cover bg-hero-bg-img text-white mb-14">
       <div className="flex justify-center flex-col">
         {/* Banner Content */}
         <div className="mt-10 ">
