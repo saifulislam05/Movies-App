@@ -3,20 +3,29 @@ import { getMovies, getPopularMovies, getTopRatedMovies, getTrendingMovies } fro
 
 const initialState = {
   movies: { data: [], isLoading: false, isError: false, error: "" },
-  trending: { data: [], isLoading: false, isError: false, error: "" },
-  popular: { data: [], isLoading: false, isError: false, error: "" },
-  topRated: { data: [], isLoading: false, isError: false, error: "" },
+  trendingMovies: { data: [], isLoading: false, isError: false, error: "" },
+  popularMovies: { data: [], isLoading: false, isError: false, error: "" },
+  topRatedMovies: { data: [], isLoading: false, isError: false, error: "" },
 };
 
 
 // async thunks
 export const fetchMovies = createAsyncThunk(
-    "movies/fetchMovies",
-    async () => {
-        const movies = await getMovies();
-        return movies
-    }
-)
+  "movies/fetchMovies",
+  async ({ genres, sortBy }) => {
+    console.log("thunk" + genres, sortBy);
+
+    const movies = await getMovies(genres, sortBy);
+    return movies;
+  }
+);
+// export const filterMovies = createAsyncThunk(
+//   "movies/filterMovies",
+//   async ({ genres, sortBy }) => {
+//     const movies = await getFilteredMovies(genres, sortBy);
+//     return movies;
+//   }
+// );
 export const fetchTrendingMovies = createAsyncThunk(
     "movies/fetchTrendingMovies",
     async () => {
@@ -60,47 +69,61 @@ export const moviesSlice = createSlice({
         state.movies.isError = true;
         state.movies.error = action.error?.message;
       })
+      // Filter  Movies
+      // .addCase(filterMovies.pending, (state) => {
+      //   state.movies.isLoading = true;
+      // })
+      // .addCase(filterMovies.fulfilled, (state, action) => {
+      //   state.movies.isLoading = false;
+      //   state.movies.isError = false;
+      //   state.movies.data = action.payload;
+      // })
+      // .addCase(filterMovies.rejected, (state, action) => {
+      //   state.movies.isLoading = false;
+      //   state.movies.isError = true;
+      //   state.movies.error = action.error?.message;
+      // })
       // Trending Movies
       .addCase(fetchTrendingMovies.pending, (state) => {
-        state.trending.isLoading = true;
+        state.trendingMovies.isLoading = true;
       })
       .addCase(fetchTrendingMovies.fulfilled, (state, action) => {
-        state.trending.isLoading = false;
-        state.trending.isError = false;
-        state.trending.data = action.payload;
+        state.trendingMovies.isLoading = false;
+        state.trendingMovies.isError = false;
+        state.trendingMovies.data = action.payload;
       })
       .addCase(fetchTrendingMovies.rejected, (state, action) => {
-        state.trending.isLoading = false;
-        state.trending.isError = true;
-        state.trending.error = action.error?.message;
+        state.trendingMovies.isLoading = false;
+        state.trendingMovies.isError = true;
+        state.trendingMovies.error = action.error?.message;
       })
       // Popular Movies
       .addCase(fetchPopularMovies.pending, (state) => {
-        state.popular.isLoading = true;
+        state.popularMovies.isLoading = true;
       })
       .addCase(fetchPopularMovies.fulfilled, (state, action) => {
-        state.popular.isLoading = false;
-        state.popular.isError = false;
-        state.popular.data = action.payload;
+        state.popularMovies.isLoading = false;
+        state.popularMovies.isError = false;
+        state.popularMovies.data = action.payload;
       })
       .addCase(fetchPopularMovies.rejected, (state, action) => {
-        state.popular.isLoading = false;
-        state.popular.isError = true;
-        state.popular.error = action.error?.message;
+        state.popularMovies.isLoading = false;
+        state.popularMovies.isError = true;
+        state.popularMovies.error = action.error?.message;
       })
       // Top Rated Movies
       .addCase(fetchTopRatedMovies.pending, (state) => {
-        state.topRated.isLoading = true;
+        state.topRatedMovies.isLoading = true;
       })
       .addCase(fetchTopRatedMovies.fulfilled, (state, action) => {
-        state.topRated.isLoading = false;
-        state.topRated.isError = false;
-        state.topRated.data = action.payload;
+        state.topRatedMovies.isLoading = false;
+        state.topRatedMovies.isError = false;
+        state.topRatedMovies.data = action.payload;
       })
       .addCase(fetchTopRatedMovies.rejected, (state, action) => {
-        state.topRated.isLoading = false;
-        state.topRated.isError = true;
-        state.topRated.error = action.error?.message;
+        state.topRatedMovies.isLoading = false;
+        state.topRatedMovies.isError = true;
+        state.topRatedMovies.error = action.error?.message;
       });
   },
 });

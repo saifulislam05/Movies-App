@@ -6,22 +6,22 @@ import { fetchPopularMovies, fetchTopRatedMovies, fetchTrendingMovies } from "..
 const Collection = ({title}) => {
 const dispatch = useDispatch();
 
-const { trending, popular, topRated } = useSelector((state) => state.movies);
+const { trendingMovies, popularMovies, topRatedMovies } = useSelector((state) => state.movies);
 
 useEffect(() => {
   switch (title) {
     case "Trending":
-      if (trending.data.length === 0) {
+      if (trendingMovies.data.length === 0) {
         dispatch(fetchTrendingMovies());
       }
       break;
     case "What's Popular":
-      if (popular.data.length === 0) {
+      if (popularMovies.data.length === 0) {
         dispatch(fetchPopularMovies());
       }
       break;
     case "Top Rated":
-      if (topRated.data.length === 0) {
+      if (topRatedMovies.data.length === 0) {
         dispatch(fetchTopRatedMovies());
       }
       break;
@@ -34,16 +34,16 @@ useEffect(() => {
 
   switch (title) {
     case "Trending":
-      categoryState = trending;
+      categoryState = trendingMovies;
       break;
     case "What's Popular":
-      categoryState = popular;
+      categoryState = popularMovies;
       break;
     case "Top Rated":
-      categoryState = topRated;
+      categoryState = topRatedMovies;
       break;
     default:
-    // Handle any default case or do nothing
+
   }
 
   if (categoryState.isLoading) content = <p>Loading...</p>;

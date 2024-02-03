@@ -1,8 +1,7 @@
 import { createSlice,createAsyncThunk } from "@reduxjs/toolkit";
 import { getSearched } from "./searchAPI";
 
-const initialState = {
-  searched: { data: [], isLoading: false, isError: false, error: "" },
+const initialState = {data: [], isLoading: false, isError: false, error: "" 
   
 };
 
@@ -21,17 +20,17 @@ export const searchedSlice = createSlice({
     builder
       // searched
       .addCase(searchThunk.pending, (state) => {
-        state.searched.isLoading = true;
+        state.isLoading = true;
       })
       .addCase(searchThunk.fulfilled, (state, action) => {
-        state.searched.isLoading = false;
-        state.searched.isError = false;
-        state.searched.data = action.payload;
+        state.isLoading = false;
+        state.isError = false;
+        state.data = action.payload;
       })
       .addCase(searchThunk.rejected, (state, action) => {
-        state.searched.isLoading = false;
-        state.searched.isError = true;
-        state.searched.error = action.error?.message;
+        state.isLoading = false;
+        state.isError = true;
+        state.error = action.error?.message;
       })
       
   },

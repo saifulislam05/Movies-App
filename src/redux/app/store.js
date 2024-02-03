@@ -1,4 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
+import filterReducer from "../features/filter/filterSlice";
 import genresReducer from "../features/generes/genresSlice";
 import moviesReducer from "../features/movies/moviesSlice";
 import searchReducer from "../features/search/searchSlice";
@@ -9,6 +10,7 @@ export const store = configureStore({
     movies: moviesReducer,
     tvShows: tvShowsReducer,
     genres: genresReducer,
-    search:searchReducer
+    search: searchReducer,
+    filter:filterReducer
   },
 });

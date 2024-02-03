@@ -3,9 +3,9 @@ import { getPopularTvShows, getTopRatedTvShows, getTrendingTvShows, getTvShows }
 
 const initialState = {
   tvShows: { data: [], isLoading: false, isError: false, error: "" },
-  trending: { data: [], isLoading: false, isError: false, error: "" },
-  popular: { data: [], isLoading: false, isError: false, error: "" },
-  topRated: { data: [], isLoading: false, isError: false, error: "" },
+  trendingTvShows: { data: [], isLoading: false, isError: false, error: "" },
+  popularTvShows: { data: [], isLoading: false, isError: false, error: "" },
+  topRatedTvShows: { data: [], isLoading: false, isError: false, error: "" },
 };
 
 
@@ -62,45 +62,45 @@ export const tvShowsSlice = createSlice({
       })
       // Trending TvShows
       .addCase(fetchTrendingTvShows.pending, (state) => {
-        state.trending.isLoading = true;
+        state.trendingTvShows.isLoading = true;
       })
       .addCase(fetchTrendingTvShows.fulfilled, (state, action) => {
-        state.trending.isLoading = false;
-        state.trending.isError = false;
-        state.trending.data = action.payload;
+        state.trendingTvShows.isLoading = false;
+        state.trendingTvShows.isError = false;
+        state.trendingTvShows.data = action.payload;
       })
       .addCase(fetchTrendingTvShows.rejected, (state, action) => {
-        state.trending.isLoading = false;
-        state.trending.isError = true;
-        state.trending.error = action.error?.message;
+        state.trendingTvShows.isLoading = false;
+        state.trendingTvShows.isError = true;
+        state.trendingTvShows.error = action.error?.message;
       })
       // Popular TvShows
       .addCase(fetchPopularTvShows.pending, (state) => {
-        state.popular.isLoading = true;
+        state.popularTvShows.isLoading = true;
       })
       .addCase(fetchPopularTvShows.fulfilled, (state, action) => {
-        state.popular.isLoading = false;
-        state.popular.isError = false;
-        state.popular.data = action.payload;
+        state.popularTvShows.isLoading = false;
+        state.popularTvShows.isError = false;
+        state.popularTvShows.data = action.payload;
       })
       .addCase(fetchPopularTvShows.rejected, (state, action) => {
-        state.popular.isLoading = false;
-        state.popular.isError = true;
-        state.popular.error = action.error?.message;
+        state.popularTvShows.isLoading = false;
+        state.popularTvShows.isError = true;
+        state.popularTvShows.error = action.error?.message;
       })
       // Top Rated TvShows
       .addCase(fetchTopRatedTvShows.pending, (state) => {
-        state.topRated.isLoading = true;
+        state.topRatedTvShows.isLoading = true;
       })
       .addCase(fetchTopRatedTvShows.fulfilled, (state, action) => {
-        state.topRated.isLoading = false;
-        state.topRated.isError = false;
-        state.topRated.data = action.payload;
+        state.topRatedTvShows.isLoading = false;
+        state.topRatedTvShows.isError = false;
+        state.topRatedTvShows.data = action.payload;
       })
       .addCase(fetchTopRatedTvShows.rejected, (state, action) => {
-        state.topRated.isLoading = false;
-        state.topRated.isError = true;
-        state.topRated.error = action.error?.message;
+        state.topRatedTvShows.isLoading = false;
+        state.topRatedTvShows.isError = true;
+        state.topRatedTvShows.error = action.error?.message;
       });
   },
 });

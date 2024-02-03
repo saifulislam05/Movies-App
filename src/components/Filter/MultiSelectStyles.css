@@ -1,28 +1,28 @@
 /* MultiSelectStyles.css */
 .multiselect-container .highlight,
 .multiselect-container .option:hover {
-    background-color: green !important;
+    background-color: #059061 !important;
 }
 
 /* Additional styles for the Multiselect component */
 .multiselect-container {
     max-width: 400px;
     color: white;
-    border: green;
+    border: #059061;
 }
 
  .searchWrapper {
-    border: 2px solid green;
-    padding: 2px 5px;
-    border-radius: 15px;
-    -webkit-border-radius: 15px;
-    -moz-border-radius: 15px;
-    -ms-border-radius: 15px;
-    -o-border-radius: 15px;
+    border: 2px solid #059061;
+    padding: 10px 10px;
+    border-radius: 0.5rem;
+    -webkit-border-radius: 0.5rem;
+    -moz-border-radius: 0.5rem;
+    -ms-border-radius: 0.5rem;
+    -o-border-radius: 0.5rem;
 }
 
 .searchWrapper .chip {
-    background: green;
+    background: #059061;
     padding: 1px 3px;
     font-size: 12px;
 }
