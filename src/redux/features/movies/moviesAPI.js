@@ -1,7 +1,6 @@
 import axios from "../../utils/axios";
 
 export const getMovies = async (genres, sortBy) => {
-  console.log("MoviesAPI" + genres, sortBy);
   let queryString = "";
   if (genres?.length > 0) {
     queryString += `?with_genres=${genres?.join(",")}`;

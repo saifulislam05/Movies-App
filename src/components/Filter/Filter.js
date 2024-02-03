@@ -38,7 +38,7 @@ const Filter = () => {
           onChange={handleSort}
           value={selectedSortOption}
         >
-          <option value="" disabled>
+          <option value="" >
             Sort By
           </option>
           {sortOptions.map((option) => (

@@ -1,5 +1,10 @@
-import { createSlice,createAsyncThunk } from "@reduxjs/toolkit";
-import { getMovies, getPopularMovies, getTopRatedMovies, getTrendingMovies } from "./moviesAPI";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import {
+  getMovies,
+  getPopularMovies,
+  getTopRatedMovies,
+  getTrendingMovies,
+} from "./moviesAPI";
 
 const initialState = {
   movies: { data: [], isLoading: false, isError: false, error: "" },
@@ -8,31 +13,22 @@ const initialState = {
   topRatedMovies: { data: [], isLoading: false, isError: false, error: "" },
 };
 
-
 // async thunks
 export const fetchMovies = createAsyncThunk(
   "movies/fetchMovies",
   async ({ genres, sortBy }) => {
-    console.log("thunk" + genres, sortBy);
-
     const movies = await getMovies(genres, sortBy);
     return movies;
   }
 );
-// export const filterMovies = createAsyncThunk(
-//   "movies/filterMovies",
-//   async ({ genres, sortBy }) => {
-//     const movies = await getFilteredMovies(genres, sortBy);
-//     return movies;
-//   }
-// );
+
 export const fetchTrendingMovies = createAsyncThunk(
-    "movies/fetchTrendingMovies",
-    async () => {
-        const movies = await getTrendingMovies();
-        return movies
-    }
-)
+  "movies/fetchTrendingMovies",
+  async () => {
+    const movies = await getTrendingMovies();
+    return movies;
+  }
+);
 
 export const fetchPopularMovies = createAsyncThunk(
   "movies/fetchPopularMovies",
@@ -69,20 +65,6 @@ export const moviesSlice = createSlice({
         state.movies.isError = true;
         state.movies.error = action.error?.message;
       })
-      // Filter  Movies
-      // .addCase(filterMovies.pending, (state) => {
-      //   state.movies.isLoading = true;
-      // })
-      // .addCase(filterMovies.fulfilled, (state, action) => {
-      //   state.movies.isLoading = false;
-      //   state.movies.isError = false;
-      //   state.movies.data = action.payload;
-      // })
-      // .addCase(filterMovies.rejected, (state, action) => {
-      //   state.movies.isLoading = false;
-      //   state.movies.isError = true;
-      //   state.movies.error = action.error?.message;
-      // })
       // Trending Movies
       .addCase(fetchTrendingMovies.pending, (state) => {
         state.trendingMovies.isLoading = true;

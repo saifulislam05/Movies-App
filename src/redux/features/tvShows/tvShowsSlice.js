@@ -11,12 +11,12 @@ const initialState = {
 
 // async thunks
 export const fetchTvShows = createAsyncThunk(
-    "tvShows/fetchTvShows",
-    async () => {
-        const TvShows = await getTvShows();
-        return TvShows
-    }
-)
+  "tvShows/fetchTvShows",
+  async ({ genres, sortBy }) => {
+    const TvShows = await getTvShows(genres,sortBy);
+    return TvShows;
+  }
+);
 export const fetchTrendingTvShows = createAsyncThunk(
     "tvShows/fetchTrendingTvShows",
     async () => {

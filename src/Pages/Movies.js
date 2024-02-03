@@ -3,16 +3,22 @@ import Card from "../components/Cards/Card";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchMovies } from "../redux/features/movies/moviesSlice";
 import Filter from "../components/Filter/Filter";
+import { fetchGenres } from "../redux/features/generes/genresSlice";
 
 const Movies = () => {
   const dispatch = useDispatch();
 
   const { movies } = useSelector((state) => state.movies);
   const { selectedGenres, sortBy } = useSelector((state) => state.filter);
+  const { genres } = useSelector((state) => state.genres);
 
+  if (genres.length === 0) {
+    console.log(genres);
+    dispatch(fetchGenres("tv"));
+  }
   useEffect(() => {
     if (movies.data.length === 0) {
-      dispatch(fetchMovies(selectedGenres, sortBy));
+      dispatch(fetchMovies());
     }
   }, []);
 
