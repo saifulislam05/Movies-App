@@ -1,5 +1,10 @@
 import axios from "../../utils/axios";
 
+export const getMovies = async () => {
+    const response = await axios.get("/discover/movie");
+    return response.data.results;
+}
+
 export const getTrendingMovies = async () => {
     const response = await axios.get("/trending/movie/day");
     return response.data.results;

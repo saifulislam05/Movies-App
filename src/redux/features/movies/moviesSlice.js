@@ -1,7 +1,8 @@
 import { createSlice,createAsyncThunk } from "@reduxjs/toolkit";
-import { getPopularMovies, getTopRatedMovies, getTrendingMovies } from "./moviesAPI";
+import { getMovies, getPopularMovies, getTopRatedMovies, getTrendingMovies } from "./moviesAPI";
 
 const initialState = {
+  movies: { data: [], isLoading: false, isError: false, error: "" },
   trending: { data: [], isLoading: false, isError: false, error: "" },
   popular: { data: [], isLoading: false, isError: false, error: "" },
   topRated: { data: [], isLoading: false, isError: false, error: "" },
@@ -9,6 +10,13 @@ const initialState = {
 
 
 // async thunks
+export const fetchMovies = createAsyncThunk(
+    "movies/fetchMovies",
+    async () => {
+        const movies = await getMovies();
+        return movies
+    }
+)
 export const fetchTrendingMovies = createAsyncThunk(
     "movies/fetchTrendingMovies",
     async () => {
@@ -38,6 +46,20 @@ export const moviesSlice = createSlice({
   initialState,
   extraReducers: (builder) => {
     builder
+      // Movies
+      .addCase(fetchMovies.pending, (state) => {
+        state.movies.isLoading = true;
+      })
+      .addCase(fetchMovies.fulfilled, (state, action) => {
+        state.movies.isLoading = false;
+        state.movies.isError = false;
+        state.movies.data = action.payload;
+      })
+      .addCase(fetchMovies.rejected, (state, action) => {
+        state.movies.isLoading = false;
+        state.movies.isError = true;
+        state.movies.error = action.error?.message;
+      })
       // Trending Movies
       .addCase(fetchTrendingMovies.pending, (state) => {
         state.trending.isLoading = true;

@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import MovieCard from "../Cards/MovieCard";
+import Card from "../Cards/Card";
 import AliceCarousel from "react-alice-carousel";
 import "react-alice-carousel/lib/alice-carousel.css";
 import "./customStyle.css";
@@ -11,20 +11,20 @@ const Carousel = ({ data }) => {
     1024: { items: 5 },
   };
   const items = data?.map((item) => {
-    return <MovieCard key={item.id} data={item} />;
+    return <Card key={item.id} data={item} />;
   });
 
   // const initialData = [
-  //   <MovieCard />,
-  //   <MovieCard />,
-  //   <MovieCard />,
-  //   <MovieCard />,
-  //   <MovieCard />,
-  //   <MovieCard />,
-  //   <MovieCard />,
-  //   <MovieCard />,
-  //   <MovieCard />,
-  //   <MovieCard />,
+  //   <Card />,
+  //   <Card />,
+  //   <Card />,
+  //   <Card />,
+  //   <Card />,
+  //   <Card />,
+  //   <Card />,
+  //   <Card />,
+  //   <Card />,
+  //   <Card />,
   // ];
 
   return (

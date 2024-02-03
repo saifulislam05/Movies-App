@@ -1,28 +1,37 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import SearchBox from "./SearchBox";
 
 const Navbar = () => {
+  const { pathname } = useLocation();
+
   return (
     <div className="bg-success text-success-content ">
       <div className="navbar w-10/12 mx-auto">
         <div className="flex-1">
-          <Link className="text-xl font-bold">Movie App</Link>
+          <Link to="/" className="text-xl font-bold">
+            Movie App
+          </Link>
         </div>
         <div className="flex gap-4">
           <ul className="flex items-center gap-4 font-semibold">
-            <li className="hover:text-warning">
+            <li
+              className={`hover:text-[#505050] ${
+                pathname == "/explore/movies" ? "!text-[#ffffffd0]" : ""
+              }`}
+            >
               <Link to="/explore/movies">Movies</Link>
             </li>
-            <li className="hover:text-warning">
+            <li
+              className={`hover:text-[#505050] ${
+                pathname == "/explore/tvshows" ? "!text-[#ffffffd0]" : ""
+              }`}
+            >
               <Link to="/explore/tvshows">Tv Shows</Link>
             </li>
           </ul>
           <div className="form-control">
-            <input
-              type="text"
-              placeholder="Search"
-              className="input bg-white w-24 md:w-auto input-sm "
-            />
+            <SearchBox />
           </div>
           <div className="dropdown dropdown-end">
             <div

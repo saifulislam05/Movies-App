@@ -1,8 +1,18 @@
-import React from "react";
-import MovieCard from "../components/Cards/MovieCard";
+import React, { useEffect } from "react";
+import Card from "../components/Cards/Card";
 import MultiSelector from "../components/MultiSelector/MultiSelector";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchMovies } from "../redux/features/movies/moviesSlice";
 
 const Movies = () => {
+  const dispatch = useDispatch();
+
+  const { movies } = useSelector((state) => state.movies);
+  useEffect(() => {
+    if (movies.data.length === 0) {
+      dispatch(fetchMovies())
+    }
+  }, []);
   return (
     <div className="w-10/12 mx-auto my-14">
       <div className="mb-14 ml-1 flex justify-between">
@@ -16,25 +26,11 @@ const Movies = () => {
           </div>
         </div>
       </div>
+
       <div className="w-full grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 justify-center ">
-        <MovieCard />
-        <MovieCard />
-        <MovieCard />
-        <MovieCard />
-        <MovieCard />
-        <MovieCard />
-        <MovieCard />
-        <MovieCard />
-        <MovieCard />
-        <MovieCard />
-        <MovieCard />
-        <MovieCard />
-        <MovieCard />
-        <MovieCard />
-        <MovieCard />
-        <MovieCard />
-        <MovieCard />
-        <MovieCard />
+        {movies?.data.map(movie => {
+          return <Card key={movie.id} data={movie} />;
+        })}
       </div>
     </div>
   );

@@ -11,13 +11,19 @@ const { trending, popular, topRated } = useSelector((state) => state.movies);
 useEffect(() => {
   switch (title) {
     case "Trending":
-      dispatch(fetchTrendingMovies());
+      if (trending.data.length === 0) {
+        dispatch(fetchTrendingMovies());
+      }
       break;
     case "What's Popular":
-      dispatch(fetchPopularMovies());
+      if (popular.data.length === 0) {
+        dispatch(fetchPopularMovies());
+      }
       break;
     case "Top Rated":
-      dispatch(fetchTopRatedMovies());
+      if (topRated.data.length === 0) {
+        dispatch(fetchTopRatedMovies());
+      }
       break;
     default:
   }

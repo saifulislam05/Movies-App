@@ -6,6 +6,7 @@ import TvShows from "./Pages/TvShows";
 import Details from "./Pages/Details";
 import { store } from "./redux/app/store";
 import { Provider as ReduxProvider } from "react-redux";
+import Searched from "./Pages/Searched";
 
 function App() {
   const router = createBrowserRouter([
@@ -28,6 +29,10 @@ function App() {
         {
           path: ":type/:id",
           element: <Details />,
+        },
+        {
+          path: "search/:text",
+          element: <Searched />,
         },
       ],
     },

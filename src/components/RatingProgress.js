@@ -3,8 +3,8 @@ import React from "react";
 const RatingProgress = ({ rating }) => {
 const ratingPercentage = rating * 10;
 // Check if rating is an integer
-  const displayRating = rating.toString().includes(".")
-    ? rating.toFixed(1)
+  const displayRating = rating?.toString()?.includes(".")
+    ? rating?.toFixed(1)
     : rating;
 
   return (
