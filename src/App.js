@@ -3,6 +3,9 @@ import Layout from "./Layout";
 import Home from "./Pages/Home";
 import Movies from "./Pages/Movies";
 import TvShows from "./Pages/TvShows";
+import Details from "./Pages/Details";
+import { store } from "./redux/app/store";
+import { Provider as ReduxProvider } from "react-redux";
 
 function App() {
   const router = createBrowserRouter([
@@ -22,10 +25,18 @@ function App() {
           path: "explore/tvshows",
           element: <TvShows />,
         },
+        {
+          path: ":type/:id",
+          element: <Details />,
+        },
       ],
     },
   ]);
-  return <RouterProvider router={router} />;
+  return (
+    <ReduxProvider store={store}>
+      <RouterProvider router={router} />;
+    </ReduxProvider>
+  );
 }
 
 export default App;

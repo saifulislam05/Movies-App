@@ -1,6 +1,12 @@
 import React from "react";
 
-const RatingProgress = () => {
+const RatingProgress = ({ rating }) => {
+const ratingPercentage = rating * 10;
+// Check if rating is an integer
+  const displayRating = rating.toString().includes(".")
+    ? rating.toFixed(1)
+    : rating;
+
   return (
     <div className="relative bg-[#ffffff] rounded-full">
       <svg
@@ -28,15 +34,13 @@ const RatingProgress = () => {
             className="stroke-current text-success "
             strokeWidth="3"
             strokeDasharray="100"
-            strokeDashoffset="30"
+            strokeDashoffset={100 - ratingPercentage}
           ></circle>
         </g>
       </svg>
 
       <div className="absolute top-1/2 start-1/2 transform -translate-y-1/2 -translate-x-1/2">
-        <span className="text-center text-md font-bold text-gray-800 ">
-          7
-        </span>
+        <span className="text-center text-md font-bold text-gray-800 ">{displayRating}</span>
       </div>
     </div>
   );
